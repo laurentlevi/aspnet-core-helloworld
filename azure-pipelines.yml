@@ -22,7 +22,6 @@ steps:
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
+    AppSettings: '-key=key -api=api'
     azureSubscription: 'hellowworkressourcegroup'
     appType: 'webApp'
-    WebAppName: 'helloworldIBM'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
