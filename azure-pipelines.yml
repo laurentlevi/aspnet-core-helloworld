@@ -18,6 +18,13 @@ steps:
   inputs:
     command: 'publish'
     publishWebProjects: true
+
+- task: AzureAppServiceManage@0
+  inputs:
+    azureSubscription: 'hellowworkressourcegroup'
+    Action: 'Install Extensions'
+    WebAppName: 'helloworldIBM'
+    ExtensionsList: 'Contrast.NetCore.Azure.SiteExtension'
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
