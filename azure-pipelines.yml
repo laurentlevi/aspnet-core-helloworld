@@ -13,7 +13,12 @@ variables:
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
-
+- task: AzureKeyVault@1
+  inputs:
+    azureSubscription: 'hellowworkressourcegroup'
+    KeyVaultName: 'ContrastKeys-SaaS'
+    SecretsFilter: '*'
+    RunAsPreJob: false
 - task: DotNetCoreCLI@2
   inputs:
     command: 'publish'
@@ -28,7 +33,7 @@ steps:
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
-    AppSettings: '-contrastkey=key -contrastapi=api'
+    AppSettings: '-CONTRAST__API__USER_NAME=$(CONTRAST-AGENT-USERNAME) -CONTRAST__API__API_KEY=$(CONTRAST-API-KEY) -CONTRAST__API__SERVICE_KEY=$(AGENT-API-SERVICE-KEY) CONTRAST__API__URL=https://eval.contrastsecurity.com/'
     azureSubscription: 'hellowworkressourcegroup'
     WebAppName: 'helloworldIBM'
     appType: 'webApp'
