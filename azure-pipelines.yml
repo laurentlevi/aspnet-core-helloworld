@@ -22,6 +22,6 @@ steps:
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
-    AppSettings: '-key=key -api=api'
+    AppSettings: '-contrastkey=key -contrastapi=api'
     azureSubscription: 'hellowworkressourcegroup'
     appType: 'webApp'
