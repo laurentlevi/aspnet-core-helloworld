@@ -22,9 +22,7 @@ steps:
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
-    azureSubscription: 'montest23 - Service Endpoint'
+    azureSubscription: 'hellowworkressourcegroup'
     appType: 'webApp'
-    WebAppName: 'IBM'
+    WebAppName: 'helloworldIBM'
     packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
-    AppSettings: '-contraastapi=api'
-    ConfigurationSettings: '-contrastkey=key'
