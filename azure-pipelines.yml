@@ -6,20 +6,6 @@
 trigger:
 - master
 
-pool:
-  vmImage: 'ubuntu-latest'
-- task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'montest23 - Service Endpoint'
-    appType: 'apiApp'
-    WebAppName: 'IBM_Hello_World'
-    deployToSlotOrASE: true
-    ResourceGroupName: 'IBMhelloworld'
-    SlotName: 'production'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
-    AppSettings: '-CONTRATAPI=tototo'
-    ConfigurationSettings: '-CONTRASTKEY=tititi'
 
 variables:
   buildConfiguration: 'Release'
@@ -27,3 +13,12 @@ variables:
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'montest23 - Service Endpoint'
+    appType: 'webApp'
+    WebAppName: 'IBM'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    AppSettings: '-contraastapi=api'
+    ConfigurationSettings: '-contrastkey=key'
