@@ -28,12 +28,12 @@ steps:
   inputs:
     azureSubscription: 'hellowworkressourcegroup'
     Action: 'Install Extensions'
-    WebAppName: 'helloworldIBM'
+    WebAppName: 'davidarcherthebest'
     ExtensionsList: 'Contrast.NetCore.Azure.SiteExtension'
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
     AppSettings: '-CONTRAST__API__USER_NAME $(CONTRAST-AGENT-USERNAME) -CONTRAST__API__API_KEY $(CONTRAST-API-KEY) -CONTRAST__API__SERVICE_KEY $(AGENT-API-SERVICE-KEY) -CONTRAST__API__URL https://eval.contrastsecurity.com/'
     azureSubscription: 'hellowworkressourcegroup'
-    WebAppName: 'helloworldIBM'
+    WebAppName: 'davidarcherthebest'
     appType: 'webApp'
